@@ -2,7 +2,7 @@ from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
 
 def test_distance_sort():
-    """Requirements for Task 1B"""
+    """Unit test for Task 1B"""
 
     # Build list of stations
     stations = build_station_list()
