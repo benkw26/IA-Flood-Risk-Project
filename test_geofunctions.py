@@ -1,4 +1,4 @@
-from floodsystem.geo import stations_by_distance, stations_within_radius
+from floodsystem.geo import stations_by_distance, stations_within_radius, rivers_with_station, stations_by_river
 from floodsystem.stationdata import build_station_list
 from haversine import haversine
 
@@ -24,3 +24,19 @@ def test_radius_sort():
 
     assert haversine(close_stations[0].coord, CambCoord) <= 10
 
+def test_rivers_with_station():
+    "Unit Test for Task 1D"
+
+    # Build list of stations
+    stations = build_station_list()
+
+    assert ("River Cam", "Cambridge") in rivers_with_station(stations)    
+
+def test_stations_by_river():
+    "Unit Test for Task 1D"
+
+    # Build list of stations
+    stations = build_station_list()
+
+    assert "Cambridge" in stations_by_river(stations)["River Cam"]
+    
