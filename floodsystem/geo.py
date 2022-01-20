@@ -78,3 +78,22 @@ def stations_by_river(stations):
                 station_list.append(station.name)
         river_dict[river] = station_list
     return river_dict
+
+def rivers_by_station_number(stations, N):
+
+    river_dict = stations_by_river(stations)
+    river_dict_keys = list(river_dict.keys())
+    counter = 0
+
+    number_river_tuple_list = [(river_dict_keys[i], len(river_dict[river_dict_keys[i]])) for i in range(len(river_dict))]
+    sorted_list = sorted(number_river_tuple_list, key=lambda x: x[1], reverse=True)
+    min_no_stations = sorted_list[N-1][1]
+
+    for tuple in sorted_list:
+        if tuple[1] >= min_no_stations:
+            counter += 1
+    
+    return sorted_list[0:counter]
+
+    
+    
