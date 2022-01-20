@@ -13,7 +13,7 @@ from .utils import sorted_by_key  # noqa
 def rivers_with_station(stations, index = 10):
     """Given a list of stations, returns a tuple of (river, monitoring station).
     Optional parameter index returns the first 'index' number of rivers in alphabetical order"""
-    
+
     river_list = list(set([station.river for station in stations]))
     river_sortedlist = sorted(river_list)
     no_of_rivers = len(river_sortedlist)
@@ -26,4 +26,6 @@ def rivers_with_station(stations, index = 10):
     
 def stations_by_river(stations):
     "Given a list of station, returns a dictionary that maps the river names to a list of station objects on the corresponding river"
-    pass
+    
+    for station in stations:
+        [].append(station)
