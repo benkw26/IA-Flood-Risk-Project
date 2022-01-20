@@ -6,6 +6,7 @@ geographical data.
 
 """
 
+import rlcompleter
 from haversine import haversine, Unit
 from .utils import sorted_by_key  # noqa
 
@@ -34,3 +35,26 @@ def stations_by_distance(stations, p):
     # sort the list by distance and return the list
     return sorted_by_key(station_distance_list, 1)
 
+def stations_within_radius(stations, centre, r):
+    """
+    returns stations within a certain radius r from the centre coordinate given
+
+    Inputs
+    ------
+    stations: list of MonitoringStation objects
+    centre  : tuple of floats for the coordinate p
+    r       : float, radius of circle enveloping required stations
+
+    Returns
+    -------
+    a list of stations (MonitoringStation) within a radius r of a geographic coordinate x
+    """
+    # Initialise list to store stations within a certain radius of centre
+    within_list = []
+    # loop through all the stations in the list
+    for station in stations:
+        # determine if the distance between station and the centre is less than the radius
+        if haversine(station.coord, centre) <= r:
+            within_list.append(station)
+    
+    return within_list
