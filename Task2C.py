@@ -12,7 +12,7 @@ def run():
     
     N = 10
     for i in stations_highest_rel_level(stations, N):
-        print(f"{i[0].name} {i[1]}")
+        print(f"{i.name} {i.relative_water_level()}")
 
 if __name__ == "__main__":
     print("*** Task 2C: CUED Part IA Flood Warning System ***")
