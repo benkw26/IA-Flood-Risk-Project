@@ -1,9 +1,9 @@
 # Copyright (C) 2018 Garth N. Wells
 #
 # SPDX-License-Identifier: MIT
-"""This module contains a collection of functions related to
+"""
+This module contains a collection of functions related to
 geographical data.
-
 """
 
 import rlcompleter
@@ -60,14 +60,33 @@ def stations_within_radius(stations, centre, r):
     return within_list
 
 def rivers_with_station(stations):
-    """Given a list of stations, returns a tuple of (river, monitoring station).
-    Optional parameter index: Returns the first 'index' number(s) of rivers in alphabetical order"""
+    """
+    returns a river-station pair
+
+    Inputs
+    ------
+    stations: list of MonitoringStation objects
+
+    Returns
+    ------
+    a list of of tuples in the form (river, station)
+    """
     river_station_list = [(station.river, station.name) for station in stations]
     return river_station_list
 
     
 def stations_by_river(stations):
-    "Given a list of station, returns a dictionary that maps the river names to a list of station objects on the corresponding river."
+    """
+    returns a river and its corresponding rivers
+
+    Inputs
+    ------
+    stations: list of MonitoringStation objects
+
+    Returns
+    ------
+    a dictionary in the form {river : list of stations corresponding to the river}
+    """
     
     river_list = list(set([station.river for station in stations]))
     river_dict = {}
@@ -80,6 +99,19 @@ def stations_by_river(stations):
     return river_dict
 
 def rivers_by_station_number(stations, N):
+    """
+    returns the rivers with the greatest number of stations
+
+    Inputs
+    ------
+    stations: list of MonitoringStation objects
+    N: int, the number of tuples to output
+    *If there are more than 1 river that has the same number of stations as the Nth entry, the other stations are also included
+
+    Returns
+    ------
+    a list of N* tuples of (river, number of stations) that has the greatest number of stations
+    """
 
     river_dict = stations_by_river(stations)
     river_dict_keys = list(river_dict.keys())
