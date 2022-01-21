@@ -12,7 +12,7 @@ def run():
     # sort the stations by distance
     distance_list = stations_by_distance(stations, CambCoord)
     # get closest and furthest stations
-    closest_list = distance_list[:9]
+    closest_list = distance_list[:10]
     furthest_list = distance_list[-10:]
 
     # initialise lists to be returned
