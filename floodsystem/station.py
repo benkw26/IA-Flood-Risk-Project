@@ -38,3 +38,22 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+    def relative_water_level(self):
+        """
+        Returns the latest water level as a fraction of the typical range.
+
+        Inputs
+        ------
+
+        Returns
+        -------
+        float, fraction of the typical range of water level (None if no relevant data)
+        """
+        water_level = self.latest_level
+        if water_level == None:
+            return None
+        
+        else:
+            low, high = self.typical_range
+            return (water_level- low)/(high-low)
