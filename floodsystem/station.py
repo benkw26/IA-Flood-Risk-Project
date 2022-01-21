@@ -50,13 +50,12 @@ class MonitoringStation:
         -------
         float, fraction of the typical range of water level (None if no relevant data)
         """
-        water_level = self.latest_level
-        if water_level == None:
-            return None
-        
-        else:
+        if self.typical_range_consistent() and self.latest_level != None:
             low, high = self.typical_range
-            return (water_level- low)/(high-low)
+            return (self.latest_level- low)/(high-low)
+        else:
+            return None
+
 
     def typical_range_consistent(self):
         """This method checks whether the typical range exists and is consistent"""
