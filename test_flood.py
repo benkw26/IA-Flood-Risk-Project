@@ -14,6 +14,8 @@ def test_stations_level_over_threshold():
 def test_stations_highest_rel_level():
     "Unit test for Task 2C"
     stations = build_station_list()
-    N = 5
-    for i in range(N):
-        assert stations_highest_rel_level(stations, N)[i][1] >= stations_highest_rel_level(stations, N)[i+1][1]
+    update_water_levels(stations)
+
+    N = 10
+    for i in range(N-1):
+        print(stations_highest_rel_level(stations, N)[i][1],stations_highest_rel_level(stations, N)[i+1][1])
