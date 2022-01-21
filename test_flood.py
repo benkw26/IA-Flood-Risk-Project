@@ -13,6 +13,8 @@ def test_stations_level_over_threshold():
 
 def test_stations_highest_rel_level():
     "Unit test for Task 2C"
+
+    # Build list of stations
     stations = build_station_list()
     update_water_levels(stations)
 
