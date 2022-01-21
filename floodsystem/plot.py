@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
+import numpy as np
+from .analysis import polyfit
+from matplotlib.dates import date2num
 
 def plot_water_levels(station, dates, levels, use_plt = True):
     """
@@ -17,15 +20,16 @@ def plot_water_levels(station, dates, levels, use_plt = True):
     -------
     """
     if use_plt:
+
         plt.plot(dates, levels)
 
         plt.xlabel("Date")
         plt.ylabel("Water Level (m)")
+        plt.xlim(dates[-1], dates[0])
         plt.xticks(rotation = 45)
         plt.title(station.name)
 
         plt.tight_layout()
-        plt.show()
     
     else:
         df = pd.DataFrame(list(zip(dates, levels)), columns = ["Dates", "Levels"]) 
@@ -54,4 +58,14 @@ def generalised_plot_water_levels(station_list, dates, levels):
     plt.tight_layout(pad = 0, w_pad = 0.3, h_pad = 2.0)
     plt.show()
     
+def plot_water_level_with_fit(station, dates, levels, p):
     
+    x = date2num(dates)
+    poly, d0 = polyfit(dates, levels, p)
+    plt.plot(dates, poly(x-d0))
+
+    plt.xlabel("Date")
+    plt.ylabel("Predicted Water Level (m)")
+    plt.xlim(dates[-1], dates[0])
+    plt.xticks(rotation = 45)
+    plt.title(station.name)
