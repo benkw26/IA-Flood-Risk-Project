@@ -7,8 +7,8 @@ def run():
     # Build list of stations
     stations = build_station_list()
     N = 10
-    for i in stations_highest_rel_level(stations):
-        print(f"{i[0]} {i[1]}")
+    for i in stations_highest_rel_level(stations, N):
+        print(f"{i[0]} {i[1]}\n")
 
 if __name__ == "__main__":
     print("*** Task 2C: CUED Part IA Flood Warning System ***")
