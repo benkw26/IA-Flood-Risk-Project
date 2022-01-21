@@ -1,15 +1,13 @@
+from floodsystem.geo import rivers_with_station, stations_by_river
 from floodsystem.stationdata import build_station_list
-from floodsystem.geo import *
 
 def run():
-    """Requirements for Task 1A"""
+    """Requirements for Task 1D"""
 
     # Build list of stations
     stations = build_station_list()
 
     # Print number of rivers with stations along with the list of rivers
-    #index = 10 # Optional parameter
-    #rivers_with_station(stations, index) 
     river_list = list(set(rivers_with_station(stations)[i][0] for i in range(len(stations))))
     no_of_rivers = len(river_list)
     river_sortedlist = sorted(river_list)

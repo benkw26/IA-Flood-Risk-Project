@@ -2,8 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 """Unit test for the station module"""
-
-from floodsystem.station import MonitoringStation
+from floodsystem.station import MonitoringStation, inconsistent_typical_range_stations
 
 
 def test_create_monitoring_station():
@@ -28,6 +27,9 @@ def test_create_monitoring_station():
 
 def test_relative_water_level():
      # Create a station
+    assert s.typical_range_consistent() == True # Unit test for Task 1F
+
+    # Create a station
     s_id = "test-s-id"
     m_id = "test-m-id"
     label = "some station"
@@ -38,3 +40,9 @@ def test_relative_water_level():
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
     s.latest_level = 3.4445
     assert abs(s.relative_water_level() - 1) < 0.1
+
+def test_relative_water_level():
+     # Create a station
+    assert s.typical_range_consistent() == True # Unit test for Task 1F
+
+    assert inconsistent_typical_range_stations([s]) == []

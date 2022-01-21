@@ -57,3 +57,32 @@ class MonitoringStation:
         else:
             low, high = self.typical_range
             return (water_level- low)/(high-low)
+
+    def typical_range_consistent(self):
+        """This method checks whether the typical range exists and is consistent"""
+
+        if self.typical_range is None:
+            return False
+        elif self.typical_range[0] < self.typical_range[1]:
+            return True
+        else:
+            return False
+    
+def inconsistent_typical_range_stations(stations):
+    """
+    returns the stations that have missing or inconsistent typical range data
+
+    Inputs
+    ------
+    stations: list of MonitoringStation objects
+
+    Returns
+    ------
+    a list of stations that have missing or inconsistent typical range data
+    """
+
+    inconsistent_station_list = []
+    for station in stations:
+        if station.typical_range_consistent() == False:
+            inconsistent_station_list.append(station.name)
+    return inconsistent_station_list
