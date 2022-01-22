@@ -20,4 +20,4 @@ def test_stations_highest_rel_level():
 
     N = 10
     for i in range(N-1):
-        print(stations_highest_rel_level(stations, N)[i],stations_highest_rel_level(stations, N)[i+1])
+        assert stations_highest_rel_level(stations, N)[i].relative_water_level() > stations_highest_rel_level(stations, N)[i+1].relative_water_level()

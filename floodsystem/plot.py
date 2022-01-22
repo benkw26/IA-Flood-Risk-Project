@@ -7,7 +7,7 @@ from matplotlib.dates import date2num
 
 def plot_water_levels(station, dates, levels, use_plt = True):
     """
-    Plot a graph of the variation of the water levels with dates.
+    Plot a graph of the variation of the relative water levels with dates.
 
     Inputs
     -------
@@ -38,7 +38,7 @@ def plot_water_levels(station, dates, levels, use_plt = True):
 
 def generalised_plot_water_levels(station_list, dates, levels):
     """
-    Generalised function to plot variation of water levels at multiple stations with dates.
+    Generalised function to plot variation of relative water levels at multiple stations with dates.
 
     Inputs
     ------
@@ -59,7 +59,20 @@ def generalised_plot_water_levels(station_list, dates, levels):
     plt.show()
     
 def plot_water_level_with_fit(station, dates, levels, p):
-    
+    """
+    Plots variation of relative water levels with dates, along with an pth order polynomial best fit line.
+
+    Inputs
+    ------
+    station: MonitoringStation Object
+    dates: a list of datetime objects
+    levels: a list of water levels corresponding to the dates
+    p: int, the order of best-fit polynomial
+
+    Returns
+    -------    
+    """
+
     x = date2num(dates)
     poly, d0 = polyfit(dates, levels, p)
     plt.plot(dates, poly(x-d0))
