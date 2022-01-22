@@ -1,7 +1,8 @@
-from datetime import datetime
-from tkinter import Y
+import datetime
 import numpy as np
 from matplotlib.dates import date2num
+
+from floodsystem.datafetcher import fetch_measure_levels
 
 def polyfit(dates, levels, p):
 

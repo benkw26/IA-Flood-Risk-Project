@@ -24,7 +24,7 @@ def plot_water_levels(station, dates, levels, use_plt = True):
         plt.plot(dates, levels)
 
         plt.xlabel("Date")
-        plt.ylabel("Water Level (m)")
+        plt.ylabel("Relative Water Level")
         plt.xlim(dates[-1], dates[0])
         plt.xticks(rotation = 45)
         plt.title(station.name)
@@ -54,7 +54,7 @@ def generalised_plot_water_levels(station_list, dates, levels):
         ax.plot(date, level)
         ax.set_title(station.name)
     axes[-1].set_xlabel("Date")
-    axes[0].set_ylabel("Water Level (m)")
+    axes[0].set_ylabel("Relative Water Level")
     plt.tight_layout(pad = 0, w_pad = 0.3, h_pad = 2.0)
     plt.show()
     
@@ -65,7 +65,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.plot(dates, poly(x-d0))
 
     plt.xlabel("Date")
-    plt.ylabel("Predicted Water Level (m)")
+    plt.ylabel("Relative Water Level")
     plt.xlim(dates[-1], dates[0])
     plt.xticks(rotation = 45)
     plt.title(station.name)

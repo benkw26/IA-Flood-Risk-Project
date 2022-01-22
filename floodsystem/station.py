@@ -29,6 +29,7 @@ class MonitoringStation:
         self.catchment = catchment
 
         self.latest_level = None
+        self.risk_level = None
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -85,5 +86,11 @@ def inconsistent_typical_range_stations(stations):
     inconsistent_station_list = []
     for station in stations:
         if station.typical_range_consistent() == False:
-            inconsistent_station_list.append(station.name)
+            inconsistent_station_list.append(station)
     return inconsistent_station_list
+
+def consistent_typical_range_stations(stations):
+    inconsistent_stations = inconsistent_typical_range_stations(stations)
+    for station in inconsistent_stations:
+        stations.remove(station)
+    return stations
