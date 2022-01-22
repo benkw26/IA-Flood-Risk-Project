@@ -88,3 +88,23 @@ def inconsistent_typical_range_stations(stations):
         if station.typical_range_consistent() == False:
             inconsistent_station_list.append(station)
     return inconsistent_station_list
+
+
+def consistent_typical_range_stations(stations):
+    """
+    returns the stations that have consistent typical range data
+
+    Inputs
+    ------
+    stations: list of MonitoringStation objects
+
+    Returns
+    ------
+    a list of stations that have consistent typical range data
+    """
+
+    consistent_station_list = []
+    for station in stations:
+        if station.typical_range_consistent() == True:
+            consistent_station_list.append(station)
+    return consistent_station_list
