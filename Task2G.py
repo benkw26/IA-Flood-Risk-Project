@@ -18,7 +18,7 @@ def run():
     stations = build_station_list()
     stations = consistent_typical_range_stations(stations)
     update_water_levels(stations)
-    stations = stations[:40]
+    stations = stations
 
     for station in stations:
         dt, p = 2, 4
@@ -30,6 +30,7 @@ def run():
             tmr_num = date2num(tmr)
             pred_rel_water_level = poly(tmr_num - d0)
         except:
+            station.risk_level = "Unknown"
             continue
         if pred_rel_water_level > 3:
             station.risk_level = "Severe"
@@ -47,7 +48,8 @@ def run():
         "Severe" : "red",
         "High" : "orange",
         "Moderate" : "yellow",
-        "Low" : "green"},
+        "Low" : "green",
+        "Unknown": "blue"},
     zoom = 3, height = 300)
     fig.update_layout(mapbox_style = "dark", mapbox_accesstoken = mapbox_token)
     fig.update_layout(margin = {"r":0,"t":0,"l":0,"b":0})
