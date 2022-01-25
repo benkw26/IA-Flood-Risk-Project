@@ -49,7 +49,7 @@ def run():
         "High" : "orange",
         "Moderate" : "yellow",
         "Low" : "green",
-        "Unknown": "blue"},
+        "Unknown": "black"},
     zoom = 3, height = 300)
     fig.update_layout(mapbox_style = "dark", mapbox_accesstoken = mapbox_token)
     fig.update_layout(margin = {"r":0,"t":0,"l":0,"b":0})
