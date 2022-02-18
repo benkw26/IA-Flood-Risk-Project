@@ -18,8 +18,11 @@ def run():
     for station in stat:
         dt = 10
         dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days=dt))
-        plot_water_levels(station, dates, levels)
-        plt.show()
+        if dates == []:
+            print("{} has no data from past 10 days".format(station.name))
+        else:
+            plot_water_levels(station, dates, levels)
+            plt.show()
 
 if __name__ == "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System ***")
